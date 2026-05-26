@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyFlow | Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme-toggle.js" defer></script>
+    <script src="../js/bundle.js" defer></script>
+  </head>
+  <body data-page="analytics">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="StudyFlow dashboard">
+          <span class="brand-mark" aria-hidden="true">SF</span>
+          <span>StudyFlow</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+        </button>
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="planner.html">Planner</a></li>
+          <li><a aria-current="page" href="analytics.html">Analytics</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span aria-hidden="true">☾</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="page-intro" aria-labelledby="analytics-title">
+        <p class="eyebrow">Analytics</p>
+        <h1 id="analytics-title">Proof of work.</h1>
+      </section>
+
+      <section class="analytics-grid" aria-label="Analytics dashboard">
+        <section class="panel span-two" aria-labelledby="focus-chart-title">
+          <div class="section-heading">
+            <p class="eyebrow">Focus</p>
+            <h2 id="focus-chart-title">Minutes shipped</h2>
+          </div>
+          <div class="bar-chart" id="focusChart" role="img" aria-label="Bar chart of focus minutes by day"></div>
+        </section>
+        <section class="panel" aria-labelledby="completion-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Done</p>
+            <h2 id="completion-title">Close rate</h2>
+          </div>
+          <div class="donut" id="completionDonut" aria-label="Task completion percentage"></div>
+          <p class="chart-caption" id="completionCaption"></p>
+        </section>
+        <section class="panel" aria-labelledby="course-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Load</p>
+            <h2 id="course-title">By class</h2>
+          </div>
+          <div class="course-breakdown" id="courseBreakdown"></div>
+        </section>
+        <section class="panel span-two" aria-labelledby="wins-title">
+          <div class="section-heading">
+            <p class="eyebrow">Signal</p>
+            <h2 id="wins-title">Wins / risks</h2>
+          </div>
+          <div class="insight-list" id="insightList"></div>
+        </section>
+      </section>
+    </main>
+    <section class="ai-assistant" aria-label="StudyFlow AI assistant">
+      <button class="ai-fab" type="button" aria-expanded="false" aria-controls="aiPanel">
+        <span aria-hidden="true" class="message-icon"></span>
+        <span class="sr-only">Open assistant</span>
+      </button>
+      <div class="ai-panel" id="aiPanel" aria-live="polite">
+        <header>
+          <div>
+            <p class="eyebrow">Assistant</p>
+            <h2>Study copilot</h2>
+          </div>
+          <button class="small-action ai-close" type="button">Close</button>
+        </header>
+        <div class="ai-messages" id="aiMessages"></div>
+        <div class="ai-prompts" aria-label="Suggested assistant prompts">
+          <button type="button" data-ai-prompt="next">What should I do next?</button>
+          <button type="button" data-ai-prompt="plan">Build a study plan</button>
+          <button type="button" data-ai-prompt="risk">Show my risks</button>
+        </div>
+        <form class="ai-chat-form" data-ai-chat-form>
+          <label class="sr-only" for="aiChatInputAnalytics">Ask the assistant</label>
+          <input id="aiChatInputAnalytics" name="message" type="text" placeholder="Ask about your workload..." autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

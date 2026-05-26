@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyFlow | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme-toggle.js" defer></script>
+    <script src="../js/bundle.js" defer></script>
+  </head>
+  <body data-page="dashboard">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="StudyFlow dashboard">
+          <span class="brand-mark" aria-hidden="true">SF</span>
+          <span>StudyFlow</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+        </button>
+        <ul class="nav-links" id="primary-nav">
+          <li><a aria-current="page" href="index.html">Dashboard</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="planner.html">Planner</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span aria-hidden="true">☾</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="hero-grid" aria-labelledby="dashboard-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Sprint beta</p>
+          <h1 id="dashboard-title">Own the week.</h1>
+          <p>
+            StudyFlow turns deadlines, priorities, and workload estimates into a clear daily plan
+            for students balancing several classes.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="planner.html">Build study plan</a>
+            <a class="button secondary" href="tasks.html">Manage tasks</a>
+          </div>
+        </div>
+        <section class="today-panel" aria-labelledby="today-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Today</p>
+            <h2 id="today-title">Focus now</h2>
+          </div>
+          <div class="focus-stack" id="todayFocus" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section class="dashboard-layout" aria-label="Dashboard overview">
+        <section class="panel task-panel" aria-labelledby="quick-add-title">
+          <div class="section-heading">
+            <p class="eyebrow">Assignments</p>
+            <h2 id="quick-add-title">Fast capture</h2>
+          </div>
+          <form class="quick-form" id="quickTaskForm">
+            <label>
+              <span>Task title</span>
+              <input required name="title" type="text" placeholder="e.g. Finish CS 146J prototype" />
+            </label>
+            <label>
+              <span>Course</span>
+              <input required name="course" type="text" placeholder="CS 146J" />
+            </label>
+            <label>
+              <span>Due date</span>
+              <input required name="dueDate" type="date" />
+            </label>
+            <label>
+              <span>Priority</span>
+              <select name="priority">
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+            </label>
+            <button class="button primary" type="submit">Add task</button>
+          </form>
+          <div class="task-list" id="dashboardTasks" aria-live="polite"></div>
+        </section>
+
+        <aside class="insight-column" aria-label="Study insights">
+          <section class="panel metric-grid" aria-labelledby="metrics-title">
+            <div class="section-heading compact">
+              <p class="eyebrow">Progress</p>
+              <h2 id="metrics-title">Pulse</h2>
+            </div>
+            <div class="metrics" id="dashboardMetrics"></div>
+          </section>
+          <section class="panel" aria-labelledby="recommendation-title">
+            <div class="section-heading compact">
+              <p class="eyebrow">Recommendation</p>
+              <h2 id="recommendation-title">Next move</h2>
+            </div>
+            <p class="recommendation" id="smartRecommendation"></p>
+          </section>
+        </aside>
+      </section>
+    </main>
+    <section class="ai-assistant" aria-label="StudyFlow AI assistant">
+      <button class="ai-fab" type="button" aria-expanded="false" aria-controls="aiPanel">
+        <span aria-hidden="true" class="message-icon"></span>
+        <span class="sr-only">Open assistant</span>
+      </button>
+      <div class="ai-panel" id="aiPanel" aria-live="polite">
+        <header>
+          <div>
+            <p class="eyebrow">Assistant</p>
+            <h2>Study copilot</h2>
+          </div>
+          <button class="small-action ai-close" type="button">Close</button>
+        </header>
+        <div class="ai-messages" id="aiMessages"></div>
+        <div class="ai-prompts" aria-label="Suggested assistant prompts">
+          <button type="button" data-ai-prompt="next">What should I do next?</button>
+          <button type="button" data-ai-prompt="plan">Build a study plan</button>
+          <button type="button" data-ai-prompt="risk">Show my risks</button>
+        </div>
+        <form class="ai-chat-form" data-ai-chat-form>
+          <label class="sr-only" for="aiChatInputDashboard">Ask the assistant</label>
+          <input id="aiChatInputDashboard" name="message" type="text" placeholder="Ask about your workload..." autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

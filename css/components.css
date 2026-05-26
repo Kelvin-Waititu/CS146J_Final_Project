@@ -1,0 +1,346 @@
+.task-list,
+.focus-stack,
+.insight-list,
+.course-breakdown {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.task-card,
+.focus-card,
+.insight-card,
+.course-row,
+.metric-card,
+.session-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(238, 243, 247, 0.82));
+  border: 1px solid rgba(217, 226, 236, 0.92);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(35, 49, 78, 0.06);
+  padding: 0.9rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+:root[data-theme="dark"] .task-card,
+:root[data-theme="dark"] .focus-card,
+:root[data-theme="dark"] .insight-card,
+:root[data-theme="dark"] .course-row,
+:root[data-theme="dark"] .metric-card,
+:root[data-theme="dark"] .session-card {
+  background:
+    linear-gradient(180deg, rgba(22, 34, 53, 0.96), rgba(15, 23, 38, 0.96));
+}
+
+.task-card:hover,
+.focus-card:hover,
+.insight-card:hover,
+.course-row:hover,
+.metric-card:hover,
+.session-card:hover {
+  border-color: rgba(0, 167, 165, 0.3);
+  box-shadow: 0 14px 30px rgba(35, 49, 78, 0.12);
+  transform: translateY(-2px);
+}
+
+.task-card {
+  align-items: start;
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: 1fr auto;
+}
+
+.task-card h3,
+.focus-card h3,
+.session-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.2rem;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+.tag {
+  align-items: center;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 800;
+  min-height: 1.7rem;
+  padding: 0.25rem 0.55rem;
+  box-shadow: 0 3px 10px rgba(35, 49, 78, 0.05);
+}
+
+:root[data-theme="dark"] .tag,
+:root[data-theme="dark"] .small-action,
+:root[data-theme="dark"] .segmented-control button.active,
+:root[data-theme="dark"] .session-card {
+  background: rgba(9, 17, 31, 0.78);
+}
+
+.tag.high {
+  background: rgba(239, 111, 108, 0.12);
+  border-color: rgba(239, 111, 108, 0.28);
+  color: #a93735;
+}
+
+.tag.medium {
+  background: rgba(246, 183, 60, 0.17);
+  border-color: rgba(246, 183, 60, 0.34);
+  color: #875c00;
+}
+
+.tag.low {
+  background: rgba(29, 124, 99, 0.12);
+  border-color: rgba(29, 124, 99, 0.28);
+  color: var(--green);
+}
+
+.small-action {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font-weight: 800;
+  min-height: 2.2rem;
+  padding: 0.45rem 0.65rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.small-action:hover,
+.small-action:focus-visible {
+  border-color: var(--teal);
+  box-shadow: var(--ring);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.metrics {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-card strong {
+  display: block;
+  font-size: clamp(1.55rem, 3vw, 1.95rem);
+  line-height: 1;
+}
+
+.metric-card span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.recommendation {
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.segmented-control {
+  background: rgba(238, 243, 247, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.25rem;
+}
+
+:root[data-theme="dark"] .segmented-control {
+  background: rgba(16, 25, 42, 0.92);
+}
+
+.segmented-control button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  font-weight: 800;
+  min-height: 2.1rem;
+  padding: 0.35rem 0.7rem;
+  transition: background 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.segmented-control button.active {
+  background: white;
+  box-shadow: 0 6px 16px rgba(35, 49, 78, 0.12);
+  color: var(--ink);
+}
+
+.task-table {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.table-row {
+  align-items: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(238, 243, 247, 0.9));
+  border: 1px solid rgba(217, 226, 236, 0.92);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(35, 49, 78, 0.06);
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: minmax(0, 1.5fr) 0.8fr 0.7fr auto;
+  padding: 0.85rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+:root[data-theme="dark"] .table-row {
+  background:
+    linear-gradient(180deg, rgba(22, 34, 53, 0.96), rgba(15, 23, 38, 0.96));
+}
+
+.table-row:hover {
+  border-color: rgba(0, 167, 165, 0.28);
+  box-shadow: 0 14px 30px rgba(35, 49, 78, 0.12);
+  transform: translateY(-1px);
+}
+
+.week-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.day-column {
+  background:
+    linear-gradient(180deg, rgba(238, 243, 247, 0.95), rgba(247, 250, 252, 0.95));
+  border: 1px solid rgba(217, 226, 236, 0.92);
+  border-radius: 8px;
+  min-height: 260px;
+  padding: 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+:root[data-theme="dark"] .day-column {
+  background:
+    linear-gradient(180deg, rgba(22, 34, 53, 0.95), rgba(16, 25, 42, 0.95));
+}
+
+.day-column h3 {
+  font-size: 0.9rem;
+  margin: 0 0 0.7rem;
+}
+
+.session-card {
+  background: white;
+  border-left: 4px solid var(--teal);
+  margin-bottom: 0.55rem;
+  padding: 0.7rem;
+}
+
+.planner-note {
+  background: linear-gradient(135deg, rgba(66, 103, 213, 0.12), rgba(0, 167, 165, 0.1));
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  color: var(--muted);
+  margin-top: 1rem;
+  padding: 0.85rem;
+}
+
+.bar-chart {
+  align-items: end;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(7, minmax(40px, 1fr));
+  min-height: 280px;
+}
+
+.bar-column {
+  align-items: center;
+  display: grid;
+  gap: 0.45rem;
+  grid-template-rows: 1fr auto auto;
+  height: 280px;
+}
+
+.bar-fill {
+  align-self: end;
+  background: linear-gradient(180deg, var(--teal), var(--blue));
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 0 10px 20px rgba(66, 103, 213, 0.18);
+  min-height: 12px;
+  width: 100%;
+}
+
+.bar-label,
+.bar-value,
+.chart-caption {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.donut {
+  align-items: center;
+  aspect-ratio: 1;
+  background: conic-gradient(var(--green) 0deg, var(--teal) var(--angle), var(--subtle) var(--angle), var(--subtle) 360deg);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(217, 226, 236, 0.8), 0 16px 34px rgba(35, 49, 78, 0.12);
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  max-width: 230px;
+  position: relative;
+}
+
+.donut::after {
+  background: var(--paper);
+  border-radius: 50%;
+  content: attr(data-label);
+  display: grid;
+  font-size: 1.8rem;
+  font-weight: 800;
+  inset: 18%;
+  place-items: center;
+  position: absolute;
+}
+
+.course-row {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.course-row header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-track {
+  background: var(--paper);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(217, 226, 236, 0.8);
+  height: 0.65rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--gold), var(--coral));
+  height: 100%;
+}
+
+.empty-state {
+  background: var(--subtle);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 1rem;
+  text-align: center;
+}

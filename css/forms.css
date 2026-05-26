@@ -1,0 +1,160 @@
+label {
+  color: var(--muted);
+  display: grid;
+  font-size: 0.9rem;
+  font-weight: 700;
+  gap: 0.35rem;
+}
+
+input,
+select {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  min-height: 2.75rem;
+  padding: 0.7rem 0.8rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  width: 100%;
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select {
+  background: rgba(9, 17, 31, 0.72);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--teal);
+  box-shadow: var(--ring);
+  outline: none;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--line-strong);
+}
+
+.quick-form {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(120px, auto);
+  margin-bottom: 1rem;
+}
+
+.stacked-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.form-steps {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-steps span {
+  align-items: center;
+  background: var(--subtle);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: 800;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}
+
+.form-steps span.active {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  border-color: transparent;
+  box-shadow: 0 8px 18px rgba(0, 127, 125, 0.18);
+  color: white;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.form-actions {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: 0.75fr 1fr;
+}
+
+.form-preview {
+  background:
+    linear-gradient(135deg, rgba(0, 167, 165, 0.11), rgba(66, 103, 213, 0.1)),
+    white;
+  border: 1px solid rgba(0, 167, 165, 0.2);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  color: var(--muted);
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem;
+}
+
+.form-preview strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.form-preview em {
+  color: var(--muted-strong);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.risk-meter {
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 999px;
+  height: 0.55rem;
+  margin-block: 0.25rem;
+  overflow: hidden;
+}
+
+:root[data-theme="dark"] .form-preview {
+  background:
+    linear-gradient(135deg, rgba(33, 212, 209, 0.13), rgba(126, 162, 255, 0.12)),
+    rgba(9, 17, 31, 0.82);
+}
+
+:root[data-theme="dark"] .risk-meter {
+  background: rgba(9, 17, 31, 0.8);
+}
+
+.risk-meter span {
+  background: linear-gradient(90deg, var(--green), var(--gold), var(--coral));
+  display: block;
+  height: 100%;
+}
+
+.form-error {
+  color: #a93735;
+  font-size: 0.86rem;
+  font-weight: 800;
+  margin: 0;
+  min-height: 1.25rem;
+}

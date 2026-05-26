@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyFlow | Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme-toggle.js" defer></script>
+    <script src="../js/bundle.js" defer></script>
+  </head>
+  <body data-page="planner">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="StudyFlow dashboard">
+          <span class="brand-mark" aria-hidden="true">SF</span>
+          <span>StudyFlow</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+        </button>
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a aria-current="page" href="planner.html">Planner</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span aria-hidden="true">☾</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="page-intro" aria-labelledby="planner-title">
+        <p class="eyebrow">Scheduler</p>
+        <h1 id="planner-title">Auto-plan the grind.</h1>
+      </section>
+
+      <section class="planner-grid">
+        <section class="panel" aria-labelledby="generated-title">
+          <div class="section-heading with-actions">
+            <div>
+              <p class="eyebrow">Auto-plan</p>
+              <h2 id="generated-title">Best blocks</h2>
+            </div>
+            <button class="button secondary" id="regeneratePlan" type="button">Regenerate</button>
+          </div>
+          <div class="week-grid" id="weekPlan" aria-live="polite"></div>
+        </section>
+
+        <aside class="panel" aria-labelledby="manual-session-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Manual</p>
+            <h2 id="manual-session-title">Add block</h2>
+          </div>
+          <form class="stacked-form" id="sessionForm">
+            <label>
+              <span>Subject</span>
+              <input required name="subject" type="text" placeholder="CS 146J" />
+            </label>
+            <label>
+              <span>Day</span>
+              <select name="day">
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </label>
+            <label>
+              <span>Start time</span>
+              <input required name="time" type="time" value="14:00" />
+            </label>
+            <label>
+              <span>Duration</span>
+              <select name="duration">
+                <option value="25">25 minutes</option>
+                <option value="50" selected>50 minutes</option>
+                <option value="75">75 minutes</option>
+              </select>
+            </label>
+            <button class="button primary" type="submit">Add to week</button>
+          </form>
+          <div class="planner-note">
+            <strong>Scheduling logic:</strong>
+            high-priority tasks are split into earlier, shorter blocks before their due dates.
+          </div>
+        </aside>
+      </section>
+    </main>
+    <section class="ai-assistant" aria-label="StudyFlow AI assistant">
+      <button class="ai-fab" type="button" aria-expanded="false" aria-controls="aiPanel">
+        <span aria-hidden="true" class="message-icon"></span>
+        <span class="sr-only">Open assistant</span>
+      </button>
+      <div class="ai-panel" id="aiPanel" aria-live="polite">
+        <header>
+          <div>
+            <p class="eyebrow">Assistant</p>
+            <h2>Study copilot</h2>
+          </div>
+          <button class="small-action ai-close" type="button">Close</button>
+        </header>
+        <div class="ai-messages" id="aiMessages"></div>
+        <div class="ai-prompts" aria-label="Suggested assistant prompts">
+          <button type="button" data-ai-prompt="next">What should I do next?</button>
+          <button type="button" data-ai-prompt="plan">Build a study plan</button>
+          <button type="button" data-ai-prompt="risk">Show my risks</button>
+        </div>
+        <form class="ai-chat-form" data-ai-chat-form>
+          <label class="sr-only" for="aiChatInputPlanner">Ask the assistant</label>
+          <input id="aiChatInputPlanner" name="message" type="text" placeholder="Ask about your workload..." autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
