@@ -1,0 +1,81 @@
+name: Render Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check JavaScript syntax
+        run: |
+          if ls js/*.js >/dev/null 2>&1; then
+            for file in js/*.js; do
+              node --check "$file"
+            done
+          fi
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install -D @playwright/test
+          npx playwright install chromium --with-deps
+
+      - name: Start static server
+        run: |
+          python3 -m http.server 8001 &
+          sleep 2
+
+      - name: Check app renders
+        run: |
+          node - <<'NODE'
+          const { chromium } = require('@playwright/test');
+
+          (async () => {
+            const browser = await chromium.launch();
+            const page = await browser.newPage();
+            const errors = [];
+
+            page.on('pageerror', (error) => errors.push(error.message));
+            page.on('console', (message) => {
+              if (message.type() === 'error') {
+                errors.push(message.text());
+              }
+            });
+
+            await page.goto('http://127.0.0.1:8001/pages/index.html', {
+              waitUntil: 'networkidle'
+            });
+
+            await page.waitForSelector('.brand');
+            await page.waitForSelector('#dashboardTasks .task-card');
+            await page.waitForSelector('.theme-toggle');
+
+            const bodyText = await page.locator('body').innerText();
+            if (!bodyText.includes('StudyFlow')) {
+              throw new Error('StudyFlow text did not render.');
+            }
+
+            await page.click('.theme-toggle');
+            const theme = await page.evaluate(() => document.documentElement.dataset.theme);
+            if (theme !== 'dark' && theme !== 'light') {
+              throw new Error('Theme toggle did not update the page theme.');
+            }
+
+            if (errors.length) {
+              throw new Error(errors.join('\n'));
+            }
+
+            await browser.close();
+          })();
+          NODE
